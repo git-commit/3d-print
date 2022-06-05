@@ -17,3 +17,9 @@
 * Ist noch genug Filament im Drucker?
 * Prüfe das Druckbett: Ist es sauber? => Reinigen Sie es mit Isopropanol oder ähnlichem
 * Prüfe das Druckbett: Ist es eben? => Nivellieren Sie es mit den Knöpfen
+
+## Useful Links
+* [Hotends](https://3dprinting.stackexchange.com/questions/1519/what-are-the-parts-that-make-up-a-hotend-and-what-do-they-do/1522#1522)
+* [Teaching Tech Youtube 3D Printing Beginners Playlist](https://www.youtube.com/watch?v=T-Z3GmM20JM&list=PLGqRUdq5ULsOwW9G08jV43YTdMyqJ6xGB)
+* [Print Quality Troubleshooting](https://www.simplify3d.com/support/print-quality-troubleshooting/)
+* [G-Code Overview](https://all3dp.com/2/3d-printer-g-code-commands-list-tutorial/)
