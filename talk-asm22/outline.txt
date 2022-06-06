@@ -1,0 +1,225 @@
+3D Printing Talk
+
+- Other Slides
+  - https://slideplayer.com/slide/8951019/
+  - https://prezi.com/9upkafnlqivx/3d-printers-presentation/
+- Start
+  - DE/EN?
+  - Über mich
+    - 3D Druck seit fünf Jahren. Gestartet mit Ultimaker 2 im Makerspace => Eher Profi Hardware
+    - Seit 2020 einen eigenen Drucker
+    - Ziel: Was über 3D-Drucker lernen, im speziellen den mitgebrachten und etwas eigenes slicen
+- 3D Druck im Hobbybereich
+  - Fused Deposition Modelling / Fused Filament Fabrication
+  - Resin
+- GCode Overview
+  - https://all3dp.com/2/3d-printer-g-code-commands-list-tutorial/
+  - https://i.all3dp.com/workers/images/fit=cover,w=1000,gravity=0.5x0.5,format=auto/wp-content/uploads/2021/01/27125454/g-code-commands-are-used-to-instruct-a-machine-to-dibya-chakravorty-via-all3dp-201219_download.jpg
+  - https://i.all3dp.com/workers/images/fit=cover,w=1000,gravity=0.5x0.5,format=auto/wp-content/uploads/2021/05/04153152/g28-and-g29-are-useful-for-the-initialization-phas-lucas-carolo-via-all3dp-210407_download.jpg
+  - https://i.all3dp.com/workers/images/fit=cover,w=1000,gravity=0.5x0.5,format=auto/wp-content/uploads/2021/05/04153156/these-m-commands-are-responsible-for-controlling-h-lucas-carolo-via-all3dp-210407_download.jpg
+- Hardware Overview
+  - Bed
+    - Heated Vs Non Heated
+    - Oberfläche
+    - Leveling Knobs
+  - Extruder
+    - Feeding
+      - Direct
+      - Bowden
+      - Quality Tradeoff
+  - Hotend
+    "https://3dprinting.stackexchange.com/a/1522
+    https://pic2-cdn.creality.com/website/7c66829d-6917-4e75-a124-83f8d4f09b3f
+    "
+    - 
+    - Nozzle: This is the part where the filament comes out. It takes in the molten filament (typically as a bead of 1.75mm/3mm) and tapers down to the nozzle size (typically around 0.4mm). These are typically made of brass for its good heat conductivity, but brass is not suitable for printing abrasive materials (such as glow in the dark and metal-filled filaments) so sometimes (hardened) stainless steel is used.
+    - Heater Block: Usually made from aluminium, the heater block joins the nozzle to the heat break and holds the heater cartridge and thermistor.
+    - Heater Cartridge: most hotends use a ceramic heater cartridge, though some older designs use power resistors or nichrome wire. This component is, as the name suggests, responsible for heating up the hotend. The heat block usually clamps around the heater cartridge to provide good contact.
+    - Thermistor: This part senses the temperature of the heat block. It is usually a small glass bead with two wires attached (which are typically insulated with glass fiber or teflon). For high-temperature printing, a thermocouple may be used in stead.
+    - Heat Break: this is the part where hot meets cold. It usually takes the form of a thin tube and is made of stainless steel for its low thermal conductivity. The goal is generally to have the transition be as short as possible so as little of the filament is in a molten state as possible. It connects the heat block to the heat sink.
+    - Heat Sink: the purpose of the heat sink is to cool down the cold side of the heat break. It is typically cooled with a fan. Most heat sinks also have a standard groove-mount for mounting to your printer. The heat sink usually has grooves to increase its surface area and cooling capability.
+    - Teflon Liner: some hotends have a PTFE liner that guides the filament through the heat break into the nozzle. This makes it easier to print PLA, but compared to an all-metal hotend, limits the temperatures at which you can print (making it difficult to print PETG and impossible to print polycarbonate).
+  - Motion System
+    - Stepper Motors
+    - Mainboard
+      - Stepper Drivers
+      - Microcontroller
+      - Firmware
+        - Marlin
+        - THD
+        - Klipper
+  - Filament Runout Sensor
+  - Thermal runaway
+  - Belt tension
+- Buying your first 3D Printer
+  - Disclaimer
+  - First assembly
+    - Test Endstops
+- Materials
+  - PLA
+  - PETG
+  - ABS
+  - Flexibles
+  - Filamentspule verheddert
+- Prepare the model
+  - Important Settings
+    - Infill
+    - For this printer
+      - First Layer Width
+  - Vase Mode
+  - ArcWelder
+- Prepare the printer
+  - After assembly (calibration)
+    "https://teachingtechyt.github.io/calibration.html#baseline"
+    - Bed Leveling
+    - E-Steps
+    - X/Y/Z Steps
+  - Setting up Cura
+    - Setup Printer
+      - Start GCode Standardprofil
+        "```
+        M201 X500.00 Y500.00 Z100.00 E5000.00 ;Setup machine max acceleration
+        
+        M203 X500.00 Y500.00 Z10.00 E50.00 ;Setup machine max feedrate
+        
+        M204 P500.00 R1000.00 T500.00 ;Setup Print/Retract/Travel acceleration
+        
+        M205 X8.00 Y8.00 Z0.40 E5.00 ;Setup Jerk
+        
+        M220 S100 ;Reset Feedrate
+        
+        M221 S100 ;Reset Flowrate
+        
+        
+        
+        G28 ;Home
+        
+        
+        
+        G92 E0 ;Reset Extruder
+        
+        G1 Z2.0 F3000 ;Move Z Axis up
+        
+        G1 X10.1 Y20 Z0.28 F5000.0 ;Move to start position
+        
+        G1 X10.1 Y200.0 Z0.28 F1500.0 E15 ;Draw the first line
+        
+        G1 X10.4 Y200.0 Z0.28 F5000.0 ;Move to side a little
+        
+        G1 X10.4 Y20 Z0.28 F1500.0 E30 ;Draw the second line
+        
+        G92 E0 ;Reset Extruder
+        
+        G1 Z2.0 F3000 ;Move Z Axis up
+        ```"
+      - End GCode Standardprofil
+        "```
+        G91 ;Relative positioning
+        
+        G1 E-2 F2700 ;Retract a bit
+        
+        G1 E-2 Z0.2 F2400 ;Retract and raise Z
+        
+        G1 X5 Y5 F3000 ;Wipe out
+        
+        G1 Z10 ;Raise Z more
+        
+        G90 ;Absolute positioning
+        
+        
+        
+        G1 X0 Y0 ;Present print
+        
+        M106 S0 ;Turn-off fan
+        
+        M104 S0 ;Turn-off hotend
+        
+        M140 S0 ;Turn-off bed
+        
+        
+        
+        M84 X Y E ;Disable all steppers but Z
+        
+        ```"
+    - Setup Slicing Profile
+      - Show more settings
+      - Temperatur
+    - Loading the Model
+    - Controls
+    - Slice!
+  - Before every Print
+    - Inserting Filament
+    - Clean Bed
+    - Bed leveling
+      - Paper Method
+      - ABL
+  - Print!
+    - SD Karte
+    - 
+- After the print
+  - Remove Filament
+  - Let the Print cool down before removing
+- Print Problems
+  - https://www.simplify3d.com/support/print-quality-troubleshooting/
+  - Jammed nozzle
+- Fancy Stuff
+  - Klipper
+  - Octoprint
+- Backup
+  - Anycubic i3
+    "Initial Layer Line Width => 100%
+    Infill Speed => 80mm/s
+    
+    Minimum Layer Time => 10s
+    
+    E92.60 = 9.7cm
+    E96.66980
+    
+    Credentials:
+    user: drucki
+    pw: FuckThatSh1t
+    
+    
+    Start:
+    G21 ;metric values
+    G90 ;absolute positioning
+    M82 ;set extruder to absolute mode
+    M107 ;start with the fan off
+    ; Home Axes
+    G1 Z15.0 F{speed_travel} ;move the platform down 15mm
+    G28 X0 Y0 ;move X/Y to min endstops
+    G28 Z0 ;move Z to min endstops
+    G1 Z15.0 F{speed_travel} ;move the platform down 15mm
+    ; Heat Up
+    M140 S{material_bed_temperature_layer_0}
+    M105
+    M190 S{material_bed_temperature_layer_0}
+    M104 S{material_print_temperature_layer_0}
+    M105
+    M109 S{material_print_temperature_layer_0}
+    ; Extrude some Filament
+    G92 E0 ;zero the extruded length
+    G1 F200 E3 ;extrude 3mm of feed stock
+    G92 E0 ;zero the extruded length again
+    ; Setup Print
+    G1 F{speed_travel}
+    G0 Y20 F{speed_travel}
+    M117 Printing...
+    G5
+    
+    
+    
+    G21 ;metric values
+    G90 ;absolute positioning
+    M82 ;set extruder to absolute mode
+    M107 ;start with the fan off
+    G28 X0 Y0 ;move X/Y to min endstops
+    G28 Z0 ;move Z to min endstops
+    G1 Z15.0 F{speed_travel} ;move the platform down 15mm
+    G92 E0 ;zero the extruded length
+    G1 F200 E3 ;extrude 3mm of feed stock
+    G92 E0 ;zero the extruded length again
+    G1 F{speed_travel}
+    G0 Y20 F{speed_travel}
+    M117 Printing...
+    G5"
