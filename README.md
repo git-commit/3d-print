@@ -23,3 +23,10 @@
 * [Teaching Tech Youtube 3D Printing Beginners Playlist](https://www.youtube.com/watch?v=T-Z3GmM20JM&list=PLGqRUdq5ULsOwW9G08jV43YTdMyqJ6xGB)
 * [Print Quality Troubleshooting](https://www.simplify3d.com/support/print-quality-troubleshooting/)
 * [G-Code Overview](https://all3dp.com/2/3d-printer-g-code-commands-list-tutorial/)
+
+### For increasing your youtube watch time
+* [Teaching Tech](https://www.youtube.com/c/TeachingTech)
+* [CNC Kitchen](https://www.youtube.com/c/CNCKitchen)
+* [Maker's Muse](https://www.youtube.com/c/MakersMuse)
+* [Make With Tech](https://www.youtube.com/c/MakeWithTech)
+* [Zack Freedman](https://www.youtube.com/c/ZackFreedman)
